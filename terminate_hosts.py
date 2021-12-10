@@ -26,8 +26,9 @@ print(IDs_to_terminate)
 session = boto3.session.Session()
 ec2 = session.client('ec2')
 
-n = 100
-id_chunks = [IDs_to_terminate[i:i + n] for i in range(0, len(IDs_to_terminate), n)]
-for chunk in id_chunks:
-    termination_response = ec2.terminate_instances(InstanceIds=chunk, DryRun=False)
-    pprint.pprint(termination_response)
+for host_id in IDs_to_terminate:
+    try:
+        termination_response = ec2.terminate_instances(InstanceIds=[host_id], DryRun=False)
+        pprint.pprint(termination_response)
+    except botocore.exceptions.ClientError as e:
+        print(e)
