@@ -29,5 +29,5 @@ ec2 = session.client('ec2')
 n = 100
 id_chunks = [IDs_to_terminate[i:i + n] for i in range(0, len(IDs_to_terminate), n)]
 for chunk in id_chunks:
-    termination_response = ec2.terminate_instances(InstanceIds=chunk, DryRun=True)
+    termination_response = ec2.terminate_instances(InstanceIds=chunk, DryRun=False)
     pprint.pprint(termination_response)
