@@ -19,7 +19,7 @@ with open ("./unterminated_hosts_2021-12-10.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     raw_hosts = [api.host_by_id(row["host_id"]) for row in reader]
 
-non_user_hosts = [host for host in raw_hosts if not host.user_host and host.status =="terminated"]
+non_user_hosts = [host for host in raw_hosts if not host.user_host and host.status == "terminated" and host.started_by == "mci"]
 IDs_to_terminate = [host.host_id for host in non_user_hosts]
 
 print(IDs_to_terminate)
