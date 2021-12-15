@@ -1,0 +1,4 @@
+user: "Xgen-BuildBaron-User-2"
+api_key: "REDACTED"
+api_server_host: "https://evergreen.mongodb.com/api"
+ui_server_host: "https://evergreen.mongodb.com"
